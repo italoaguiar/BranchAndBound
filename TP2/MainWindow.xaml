@@ -1,0 +1,49 @@
+﻿<Window x:Class="TP2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+        xmlns:local="clr-namespace:TP2"
+        mc:Ignorable="d"
+        Title="Universidade Federal de Ouro Preto - Algoritmo de Branch and Bound" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="cbInstances" Grid.Column="0" Margin="5"/>
+            <Button x:Name="btnLoad" Grid.Column="1" Margin="5" Click="btnLoad_Click">Carregar</Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <ListView x:Name="lvInstances" BorderThickness="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nome da Instância" Width="160" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Itens" Width="80" DisplayMemberBinding="{Binding Items}" />
+                        <GridViewColumn Header="Conflitos" Width="80" DisplayMemberBinding="{Binding Conflicts}" />
+                        <GridViewColumn Header="Carregamento" Width="85" DisplayMemberBinding="{Binding LoadTime, StringFormat={}{0}ms}" />
+                        <GridViewColumn Header="Execução" Width="85" DisplayMemberBinding="{Binding ExecutionTime, StringFormat={}{0}ms}" />
+                        <GridViewColumn Header="Nós" Width="60" DisplayMemberBinding="{Binding ExploredNodes}" />
+                        <GridViewColumn Header="Lucro" Width="50" DisplayMemberBinding="{Binding Profit}"/>
+                        <GridViewColumn Header="" Width="80"  >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Tag="{Binding}" Click="Button_Click">
+                                        Plotar
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>
